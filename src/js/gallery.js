@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 import SimpleLightbox from 'simplelightbox';
