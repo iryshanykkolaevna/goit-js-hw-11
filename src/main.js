@@ -14,6 +14,10 @@ const refs = {
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '41899926-74a7536d4d492e936dbb67b5b';
 
+const simplyGallery = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
   const query = refs.form.query.value.trim();
@@ -34,13 +38,10 @@ refs.form.addEventListener('submit', event => {
         );
         showLoader(false);
       }
-
+  simplyGallery.refresh()
       refs.gallery.innerHTML = createMarkup(data.hits);
       showLoader(false);
-      const simplyGallery = new SimpleLightbox('.gallery-item a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-      });
+      
       refs.form.reset();
     })
     .catch(error => console.error(error));
