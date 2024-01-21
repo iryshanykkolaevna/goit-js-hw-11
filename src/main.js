@@ -29,7 +29,7 @@ refs.form.addEventListener('submit', event => {
     return;
   }
   const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true`;
-
+  
   fetchImages(url)
     .then(data => {
       if (data.hits.length === 0) {
@@ -38,8 +38,9 @@ refs.form.addEventListener('submit', event => {
         );
         showLoader(false);
       }
-  simplyGallery.refresh()
+  
       refs.gallery.innerHTML = createMarkup(data.hits);
+      simplyGallery.refresh()
       showLoader(false);
       
       refs.form.reset();
